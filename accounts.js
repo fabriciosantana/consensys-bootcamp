@@ -53,6 +53,9 @@ let signedTransaction = web3js.eth.accounts.signTransaction(tx, process.env.PRIV
     console.log("### Signed Transacion 1 ### ", signed)
 })
 
-console.log("### Signed Transacion ### ", signedTransaction)
+signedTransaction = Promise.resolve(signedTransaction).then(console.log)
 
-web3js.eth.accounts.recoverTransaction(signedTransaction.rawTransaction).then(console.log)
+console.log("### Signed Transacion 2 ### ", signedTransaction)
+
+//web3js.eth.accounts.recoverTransaction(signedTransaction.rawTransaction).then(console.log)
+
