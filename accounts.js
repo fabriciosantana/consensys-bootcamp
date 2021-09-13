@@ -1,4 +1,7 @@
 const Web3js = require("web3");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 //let web3js = new Web3js(Web3js.currentProvider)
 //let web3js = new Web3js(new Web3js.providers.HttpProvider('http://localhost:8545'));
@@ -6,11 +9,11 @@ let web3js = new Web3js('http://127.0.0.1:8545')
 
 
 //console.log(web3js)
-//web3js.eth.getAccounts(console.log);
+web3js.eth.getAccounts(console.log);
 
 let account1 = web3js.eth.accounts.create()
 
-//console.log(account1)
+console.log(account1)
 
 let account2 = web3js.eth.accounts.privateKeyToAccount(account1.privateKey)
 
@@ -20,13 +23,15 @@ let account2 = web3js.eth.accounts.privateKeyToAccount(account1.privateKey)
 
 let signedMessage = web3js.eth.accounts.sign("Hello World!", account1.privateKey)
 
-//console.log(signedMessage)
+console.log("Signed message >>>>>> %s", signedMessage)
 
 address = web3js.eth.accounts.recover(signedMessage)
 
-//console.log(address)
+console.log(address)
 
-//web3js.eth.getBalance.request("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", "latest")
+
+let balance = web3js.eth.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", "latest").then(console.log)
+
 
 //web3js.eth.getTransactionCount(console.log)
 //web3js.eth.net.getId(console.log)
@@ -44,10 +49,10 @@ tx = {
   }
 
 
-let signedTransaction = web3js.eth.accounts.signTransaction(tx, "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80", (error, signed) => {
-    console.log("abc ### ", signed)
-}).then(console.log)
+let signedTransaction = web3js.eth.accounts.signTransaction(tx, process.env.PRIVATE_KEY_LOCAL, (error, signed) => {
+    console.log("### Signed Transacion 1 ### ", signed)
+})
 
-console.log("TESTE >>> ", signedTransaction)
+console.log("### Signed Transacion ### ", signedTransaction)
 
-//web3js.eth.accounts.recoverTransaction(signedTransaction.rawTransaction).then(console.log)
+web3js.eth.accounts.recoverTransaction(signedTransaction.rawTransaction).then(console.log)
