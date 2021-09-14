@@ -67,7 +67,8 @@ class Tree {
 let t = new Tree()
 
 
-const nums = [3,7,4,6,5,1,10,2,9,8];
+//const nums = [3,7,4,6,5,1,10,2,9,8];
+const nums = [1,2,3,4,5,0];
 
 nums.map( num => t.add(num));
 

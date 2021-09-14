@@ -40,4 +40,27 @@ describe('Binary Search Tree', function() {
       expect(objs.right.right.left.left.right).to.be.null;
       expect(objs.right.right.left.left.left).to.be.null;
     });
+
+    it('creates a edge case', () => {
+      const nums = [1,2,3,4,5,0];
+      const tree = new Tree();
+      nums.map( num => tree.add(num));
+      const objs = tree.toObject();
+      //render(objs, nums);
+  
+      expect(objs.value).to.be.equal(1);
+      
+      expect(objs.right.value).to.be.equal(2);
+      expect(objs.left.value).to.be.equal(0);
+
+      expect(objs.right.right.value).to.be.equal(3);
+      expect(objs.right.left).to.be.null;
+
+      expect(objs.right.right.right.value).to.be.equal(4);
+      expect(objs.right.right.left).to.be.null;
+
+      expect(objs.right.right.right.right.value).to.be.equal(5);
+      expect(objs.right.right.right.left).to.be.null;
+      
+    });
   });
