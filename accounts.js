@@ -10,7 +10,7 @@ let web3js = new Web3js('http://127.0.0.1:8545')
 
 //console.log(web3js)
 web3js.eth.getAccounts(console.log);
-
+/*
 let account1 = web3js.eth.accounts.create()
 
 console.log(account1)
@@ -59,3 +59,4 @@ console.log("### Signed Transacion 2 ### ", signedTransaction)
 
 //web3js.eth.accounts.recoverTransaction(signedTransaction.rawTransaction).then(console.log)
 
+*/
